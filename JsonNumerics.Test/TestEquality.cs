@@ -19,9 +19,9 @@ public class TestEquality
     }
 
     [Theory]
-    [InlineData(15676, 4, 1567600,6)]
-    [InlineData(15676, -4, 1567600,-2)]
-    [InlineData(4, 45678, 40,45679)]
+    [InlineData(15676, 4, 1567600, 6)]
+    [InlineData(15676, -4, 1567600, -2)]
+    [InlineData(4, 45678, 40, 45679)]
     [InlineData(4, -8674, 400, -8672)]
     public void TestDenormalizedEquality(long integerPartA, int scaleA, long integerPartB, int scaleB)
     {

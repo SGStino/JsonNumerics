@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JsonNumerics;
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-public readonly struct JsonNumber(BigInteger integerPart, int scale) : IEquatable<JsonNumber>
+public readonly struct JsonNumber(BigInteger integerPart, int scale) : IEquatable<JsonNumber>, IComparable<JsonNumber>
 {
     public readonly BigInteger IntegerPart => integerPart;
     /// <summary>
@@ -201,6 +201,7 @@ public readonly struct JsonNumber(BigInteger integerPart, int scale) : IEquatabl
     public static bool operator ==(JsonNumber left, JsonNumber right) => left.Equals(right);
     public static bool operator !=(JsonNumber left, JsonNumber right) => !left.Equals(right);
 
+
     public override bool Equals([NotNullWhen(true)] object? obj)
         => obj is JsonNumber number
         && Equals(number);
@@ -221,4 +222,51 @@ public readonly struct JsonNumber(BigInteger integerPart, int scale) : IEquatabl
         return hash.ToHashCode();
     }
     #endregion
+    #region Comparison
+    public static bool operator <(JsonNumber left, JsonNumber right)
+    {
+        return left.CompareTo(right) < 0;
+    }
+
+    public static bool operator <=(JsonNumber left, JsonNumber right)
+    {
+        return left.CompareTo(right) <= 0;
+    }
+
+    public static bool operator >(JsonNumber left, JsonNumber right)
+    {
+        return left.CompareTo(right) > 0;
+    }
+
+    public static bool operator >=(JsonNumber left, JsonNumber right)
+    {
+        return left.CompareTo(right) >= 0;
+    }
+    public int CompareTo(JsonNumber other)
+    {
+        (var self, other) = Align(other); 
+        return self.IntegerPart.CompareTo(other.IntegerPart); 
+    }
+
+    #endregion
+
+    private int AlignScale(int otherScale) => otherScale - scale;
+    public (JsonNumber a, JsonNumber b) Align(JsonNumber b)
+    {
+        var scaleAdjust = AlignScale(b.Scale);
+        if (scaleAdjust == 0)
+            return (this, b);
+
+        if (scaleAdjust > 0)
+        {
+            var newIntegerPart = IntegerPart * BigInteger.Pow(10, scaleAdjust);
+            return (new(newIntegerPart, b.Scale), b);
+        }
+        else
+        {
+            var newOtherIntegerPart = b.IntegerPart * BigInteger.Pow(10, -scaleAdjust);
+            return (this, new(newOtherIntegerPart, Scale));
+        }
+
+    }
 }

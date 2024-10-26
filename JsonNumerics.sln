@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34804.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNumerics.Test", "JsonNumerics.Test\JsonNumerics.Test.csproj", "{90A1F703-2D1F-49DE-8B97-BCC067EF18FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNumerics", "JsonNumerics\JsonNumerics.csproj", "{ABEE902A-75BD-4283-9D51-56CFAE39C87E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90A1F703-2D1F-49DE-8B97-BCC067EF18FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A1F703-2D1F-49DE-8B97-BCC067EF18FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A1F703-2D1F-49DE-8B97-BCC067EF18FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A1F703-2D1F-49DE-8B97-BCC067EF18FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEE902A-75BD-4283-9D51-56CFAE39C87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEE902A-75BD-4283-9D51-56CFAE39C87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEE902A-75BD-4283-9D51-56CFAE39C87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEE902A-75BD-4283-9D51-56CFAE39C87E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {825BC62C-8197-4C79-AD56-3D73ED36F4F5}
+	EndGlobalSection
+EndGlobal
